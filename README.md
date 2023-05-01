@@ -1,5 +1,3 @@
-Sure, here's an example README for the DLC-based-behavioral-analysis repository:
-
 # DLC-based-behavioral-analysis
 
 This repository contains code and documentation for using DeepLabCut (DLC) to analyze the behavior of animals. Specifically, the code in this repository provides a pipeline for using DLC to track the movement of animal paws and analyze their behavior.
