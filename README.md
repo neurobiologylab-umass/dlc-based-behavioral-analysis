@@ -32,6 +32,8 @@ Follow the steps below to install DeepLabCut on your Windows machine:
 
 2. Install the DeepLabCut helper package by running the following command in the Ubuntu subsystem:
    ```
+   apt update && apt upgrade
+   apt install python3-pip
    pip install deeplabcut-docker
    ```
 
