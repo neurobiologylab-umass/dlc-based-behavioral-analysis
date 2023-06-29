@@ -11,24 +11,17 @@ This repository contains code and documentation for using DeepLabCut (DLC) to an
 - Matplotlib
 - Seaborn
 
-## Installation
-
-### DeepLabCut Windows Installation Guide
+## DeepLabCut Windows Installation Guide
 
 This guide provides step-by-step instructions for installing DeepLabCut on a Windows machine. DeepLabCut is a popular open-source software package used for markerless pose estimation of animals in videos.
 
-#### Prerequisites
-
-Before proceeding with the installation, make sure you have the following prerequisites set up on your Windows machine:
-
-- [Linux installation with WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
-- [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
-
-#### Installation Steps
+### Installation Steps
 
 Follow the steps below to install DeepLabCut on your Windows machine:
 
-##### Conda Install:
+#### Conda Install:
+##### Prerequisites
+Anaconda: A free and open-source distribution of Python and R for scientific computing. It simplifies package management and deployment.
 
 1. Download and install [Anaconda](https://www.anaconda.com/distribution/): A free and open-source distribution of Python and R for scientific computing. It simplifies package management and deployment.
    
@@ -92,7 +85,14 @@ Your command prompt should look like this:
 15. If everything has been installed correctly, the DeepLabCut GUI should now appear.
 
 
-##### Docker Install:
+#### Docker Install:
+
+##### Prerequisites
+
+Before proceeding with the installation, make sure you have the following prerequisites set up on your Windows machine:
+
+- [Linux installation with WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
 
 1. Open the Ubuntu(22.04) subsystem installed with WSL 2.
 
@@ -134,6 +134,3 @@ The main script for analyzing the data is `analyze_behavior.ipynb`, which takes 
 
 Contributions to this project are welcome. If you find a bug or have a suggestion for how to improve the code, please open an issue or submit a pull request.
 
-## License
-
-This code is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
