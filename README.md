@@ -28,13 +28,80 @@ Before proceeding with the installation, make sure you have the following prereq
 
 Follow the steps below to install DeepLabCut on your Windows machine:
 
-1. Open the Ubuntu subsystem installed with WSL 2.
+##### Conda Install:
+
+1. Download and install [Anaconda](https://www.anaconda.com/distribution/): A free and open-source distribution of Python and R for scientific computing. It simplifies package management and deployment.
+   
+2. Visit the [DeepLabCut's homepage](http://www.mackenziemathislab.org/deeplabcut) and download the Conda environment file (`.yaml`). The download button can be found at the bottom of the page.
+
+3. Create a new folder named "DeepLabCut" in your "Documents" directory.
+
+4. Launch the Anaconda Navigator (Anaconda3).
+
+5. In the Anaconda Navigator, launch the "CMD.exe Prompt". This will open a new command prompt window.
+
+6. Navigate to the "DeepLabCut" directory in the command prompt:
+   
+   ```
+   cd C:\Users\YourUserName\Documents\DeepLabCut
+   ```
+
+7. In the "DeepLabCut" directory, create the new Conda environment with the downloaded `.yaml` file:
+
+   ```
+   conda env create -f DEEPLABCUT.yaml
+   ```
+
+8. If prompted, enter your administrator password to allow the installation of "python.exe".
+
+9. Once the installation is complete, activate the new Conda environment:
+
+   ```
+   conda activate DEEPLABCUT
+   ```
+
+10. Close the command prompt.
+
+11. Back in the Anaconda Navigator, select "DeepLabCut" from the "Applications on" dropdown menu.
+
+12. Find "CMD.exe Prompt" and click on "Install". Provide administrator credentials if prompted.
+
+13. After installation, click on "Launch" to open a new command prompt.
+
+14. In the new command prompt, launch a DeepLabCut session:
+
+    ```
+    ipython
+    import deeplabcut
+    deeplabcut.launch_dlc()
+    ```
+
+Your command prompt should look like this:
+
+    ```
+    (DEEPLABCUT) C:\Users\YourUserName>ipython
+    Python 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 7.25.0 -- An enhanced Interactive Python. Type '?' for help.
+
+    In [1]: import deeplabcut
+
+    In [2]: deeplabcut.launch_dlc()
+    ```
+
+15. If everything has been installed correctly, the DeepLabCut GUI should now appear.
+
+
+##### Docker Install:
+
+1. Open the Ubuntu(22.04) subsystem installed with WSL 2.
 
 2. Install the DeepLabCut helper package by running the following command in the Ubuntu subsystem:
    ```
-   apt update && apt upgrade
-   apt install python3-pip
-   pip install deeplabcut-docker
+   sudo apt update
+   sudo apt upgrade
+   sudo apt install python3-pip
+   sudo pip install deeplabcut-docker
    ```
 
 3. Verify the Docker installation by running the following command:
