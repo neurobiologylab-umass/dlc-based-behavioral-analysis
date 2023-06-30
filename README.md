@@ -22,13 +22,13 @@ This section guides you through a step-by-step process to install DeepLabCut on 
 
 Anaconda is a free and open-source distribution of Python and R, primarily used for scientific computing. It simplifies package management and deployment. You can download and install Anaconda from [here](https://www.anaconda.com/distribution/).
 
-   ![Anaconda Download](./imgs/anaconda_download.jpg)
+   <img src="./imgs/anaconda_download.jpg" alt="download anaconda" width="500" style="border: 1px solid black;">
 
 #### 2. Download the Conda Environment File:
 
 Visit the [DeepLabCut's homepage](http://www.mackenziemathislab.org/deeplabcut) and download the Conda environment file (`.yaml`). You can find the download button at the bottom of the page.
 
-   ![Download Conda Environment File](./imgs/conda_file_download.jpg)
+   <img src="./imgs/conda_file_download.jpg" alt="download conda environment file" width="500" style="border: 1px solid black;">
 
 #### 3. Create a New Folder:
 
@@ -42,7 +42,7 @@ Start the Anaconda Navigator application.
 
 In the Anaconda Navigator, launch the "CMD.exe Prompt" which will open a new command prompt window.
 
-   ![Anaconda Navigator](./imgs/anaconda_navigator.jpg)
+   <img src="./imgs/anaconda_navigator.jpg" alt="anaconda navigator" width="500" style="border: 1px solid black;">
 
 #### 6. Navigate to the Workspace:
 
@@ -60,7 +60,7 @@ In the "DeepLabCut" directory, use the downloaded `.yaml` file to create a new C
    conda env create -f DEEPLABCUT.yaml
    ```
 
-   ![Create Environment](./imgs/create_environment.jpg)
+   <img src="./imgs/create_environment.jpg" alt="create environment" width="500" style="border: 1px solid black;">
 
 #### 8. Confirm Python.exe Installation:
 
@@ -78,39 +78,35 @@ Activate the new Conda environment with:
 
 Initiate a DeepLabCut session using the command prompt:
 
-    ```
-    ipython
-    import deeplabcut
-    deeplabcut.launch_dlc()
-    ```
+   ```
+   ipython
+   import deeplabcut
+   deeplabcut.launch_dlc()
+   ```
 
 Your command prompt should appear as:
+   ```
+   (DEEPLABCUT) C:\Users\YourUserName>ipython
+   Python 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
+   Type 'copyright', 'credits' or 'license' for more information
+   IPython 7.25.0 -- An enhanced Interactive Python. Type '?' for help.
 
-    ```
-    (DEEPLABCUT) C:\Users\YourUserName>ipython
-    Python 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
-    Type 'copyright', 'credits' or 'license' for more information
-    IPython 7.25.0 -- An enhanced Interactive Python. Type '?' for help.
+   In [1]: import deeplabcut
 
-    In [1]: import deeplabcut
-
-    In [2]: deeplabcut.launch_dlc()
-    ```
+   In [2]: deeplabcut.launch_dlc()
+   ```
 
 #### 11. Verify Successful Installation:
 
-If everything has been installed correctly
-
-, the DeepLabCut GUI should now appear.
+If everything has been installed correctly, the DeepLabCut GUI should now appear.
 
 #### 12. Troubleshoot TensorFlow Installation:
 
 If you encounter an error stating "No module named 'tensorflow'", you may need to install TensorFlow using the following commands:
-
-    ```
-    pip install --upgrade pip
-    pip install tensorflow
-    ```
+   ```
+   pip install --upgrade pip
+   pip install tensorflow
+   ```
 
 For more installation tips, visit the [official DeepLabCut documentation](https://deeplabcut.github.io/DeepLabCut/docs/recipes/installTips.html).
 
