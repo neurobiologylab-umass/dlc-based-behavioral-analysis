@@ -11,57 +11,72 @@ This repository contains code and documentation for using DeepLabCut (DLC) to an
 - Matplotlib
 - Seaborn
 
+
 ## DeepLabCut Windows Installation Guide
 
-This guide provides step-by-step instructions for installing DeepLabCut on a Windows machine. DeepLabCut is a popular open-source software package used for markerless pose estimation of animals in videos.
+This section guides you through a step-by-step process to install DeepLabCut on a Windows machine. DeepLabCut is an open-source package primarily used for markerless pose estimation of animals in videos.
 
 ### Installation Steps
 
-Follow the steps below to install DeepLabCut on your Windows machine:
+#### 1. Download Anaconda:
 
-#### Conda Install:
-##### Prerequisites
-Anaconda: A free and open-source distribution of Python and R for scientific computing. It simplifies package management and deployment.
+Anaconda is a free and open-source distribution of Python and R, primarily used for scientific computing. It simplifies package management and deployment. You can download and install Anaconda from [here](https://www.anaconda.com/distribution/).
 
-1. Download and install [Anaconda](https://www.anaconda.com/distribution/): A free and open-source distribution of Python and R for scientific computing. It simplifies package management and deployment.
-   
-2. Visit the [DeepLabCut's homepage](http://www.mackenziemathislab.org/deeplabcut) and download the Conda environment file (`.yaml`). The download button can be found at the bottom of the page.
+   ![Anaconda Download](./imgs/anaconda_download.jpg)
 
-3. Create a new folder named "DeepLabCut" in your "Documents" directory.
+#### 2. Download the Conda Environment File:
 
-4. Launch the Anaconda Navigator (Anaconda3).
+Visit the [DeepLabCut's homepage](http://www.mackenziemathislab.org/deeplabcut) and download the Conda environment file (`.yaml`). You can find the download button at the bottom of the page.
 
-5. In the Anaconda Navigator, launch the "CMD.exe Prompt". This will open a new command prompt window.
+   ![Download Conda Environment File](./imgs/conda_file_download.jpg)
 
-6. Navigate to the "DeepLabCut" directory in the command prompt:
-   
+#### 3. Create a New Folder:
+
+Create a new folder named "DeepLabCut" in your preferred workspace directory.
+
+#### 4. Launch Anaconda Navigator:
+
+Start the Anaconda Navigator application.
+
+#### 5. Launch CMD.exe Prompt:
+
+In the Anaconda Navigator, launch the "CMD.exe Prompt" which will open a new command prompt window.
+
+   ![Anaconda Navigator](./imgs/anaconda_navigator.jpg)
+
+#### 6. Navigate to the Workspace:
+
+In the command prompt window, navigate to your "DeepLabCut" directory. For example, if your "DeepLabCut" folder is in the root of the C drive, you would type:
+
    ```
-   cd C:\Users\YourUserName\Documents\DeepLabCut
+   cd C:\your_workspace_directory\DeepLabCut
    ```
 
-7. In the "DeepLabCut" directory, create the new Conda environment with the downloaded `.yaml` file:
+#### 7. Create the Conda Environment:
+
+In the "DeepLabCut" directory, use the downloaded `.yaml` file to create a new Conda environment:
 
    ```
    conda env create -f DEEPLABCUT.yaml
    ```
 
-8. If prompted, enter your administrator password to allow the installation of "python.exe".
+   ![Create Environment](./imgs/create_environment.jpg)
 
-9. Once the installation is complete, activate the new Conda environment:
+#### 8. Confirm Python.exe Installation:
+
+If prompted, enter your administrator password to confirm the installation of "python.exe".
+
+#### 9. Activate the New Environment:
+
+Activate the new Conda environment with:
 
    ```
    conda activate DEEPLABCUT
    ```
 
-10. Close the command prompt.
+#### 10. Launch a DeepLabCut Session:
 
-11. Back in the Anaconda Navigator, select "DeepLabCut" from the "Applications on" dropdown menu.
-
-12. Find "CMD.exe Prompt" and click on "Install". Provide administrator credentials if prompted.
-
-13. After installation, click on "Launch" to open a new command prompt.
-
-14. In the new command prompt, launch a DeepLabCut session:
+Initiate a DeepLabCut session using the command prompt:
 
     ```
     ipython
@@ -69,7 +84,7 @@ Anaconda: A free and open-source distribution of Python and R for scientific com
     deeplabcut.launch_dlc()
     ```
 
-Your command prompt should look like this:
+Your command prompt should appear as:
 
     ```
     (DEEPLABCUT) C:\Users\YourUserName>ipython
@@ -82,8 +97,22 @@ Your command prompt should look like this:
     In [2]: deeplabcut.launch_dlc()
     ```
 
-15. If everything has been installed correctly, the DeepLabCut GUI should now appear.
+#### 11. Verify Successful Installation:
 
+If everything has been installed correctly
+
+, the DeepLabCut GUI should now appear.
+
+#### 12. Troubleshoot TensorFlow Installation:
+
+If you encounter an error stating "No module named 'tensorflow'", you may need to install TensorFlow using the following commands:
+
+    ```
+    pip install --upgrade pip
+    pip install tensorflow
+    ```
+
+For more installation tips, visit the [official DeepLabCut documentation](https://deeplabcut.github.io/DeepLabCut/docs/recipes/installTips.html).
 
 #### Docker Install:
 
