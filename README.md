@@ -2,16 +2,6 @@
 
 This repository contains code and documentation for using DeepLabCut (DLC) to analyze the behavior of animals. Specifically, the code in this repository provides a pipeline for using DLC to track the movement of animal paws and analyze their behavior.
 
-## Requirements
-
-- Python 3.x
-- DeepLabCut
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-
-
 ## DeepLabCut Windows Installation Guide
 
 This section guides you through a step-by-step process to install DeepLabCut on a Windows machine. DeepLabCut is an open-source package primarily used for markerless pose estimation of animals in videos.
@@ -95,6 +85,12 @@ Your command prompt should appear as:
 
    In [2]: deeplabcut.launch_dlc()
    ```
+
+   ```
+   python -m deeplabcut
+   ```
+
+#### 10.5 https://schoolforengineering.com/tutorial/install-tensorflow-cuda-gpu-windows-10/
 
 #### 11. Verify Successful Installation:
 
