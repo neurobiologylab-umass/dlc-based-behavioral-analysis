@@ -16,7 +16,7 @@ Anaconda is a free and open-source distribution of Python and R, primarily used 
 
 #### 2. Download the Conda Environment File:
 
-Download the Conda environment file [`DLC-CPU.yaml`](https://github.com/neurobiologylab/fiber-photometry/blob/main/env/DLC-CPU.yaml).
+Download the Conda environment file [`DLC-CPU.yaml`](https://github.com/neurobiologylab/dlc-based-behavioral-analysis/blob/main/env/DLC-CPU.yaml).
 
 #### 3. Create a New Folder:
 
