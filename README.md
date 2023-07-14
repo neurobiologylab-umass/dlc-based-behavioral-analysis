@@ -10,15 +10,13 @@ This section guides you through a step-by-step process to install DeepLabCut on 
 
 #### 1. Download Anaconda:
 
-Anaconda is a free and open-source distribution of Python and R, primarily used for scientific computing. It simplifies package management and deployment. You can download and install Anaconda from [here](https://www.anaconda.com/distribution/).
+Anaconda is a free and open-source distribution of Python and R, primarily used for scientific computing. It simplifies package management and deployment. You can download and install Anaconda from [here](https://www.anaconda.com).
 
    <img src="./imgs/anaconda_download.jpg" alt="download anaconda" width="500" style="border: 1px solid black;">
 
 #### 2. Download the Conda Environment File:
 
-Visit the [DeepLabCut's homepage](http://www.mackenziemathislab.org/deeplabcut) and download the Conda environment file (`.yaml`). You can find the download button at the bottom of the page.
-
-   <img src="./imgs/conda_file_download.jpg" alt="download conda environment file" width="500" style="border: 1px solid black;">
+Download the Conda environment file [`DLC-CPU.yaml`](https://github.com/neurobiologylab/fiber-photometry/blob/main/env/DLC-CPU.yaml).
 
 #### 3. Create a New Folder:
 
@@ -47,16 +45,12 @@ In the command prompt window, navigate to your "DeepLabCut" directory. For examp
 In the "DeepLabCut" directory, use the downloaded `.yaml` file to create a new Conda environment:
 
    ```
-   conda env create -f DEEPLABCUT.yaml
+   conda env create -f DLC-CPU.yaml
    ```
 
    <img src="./imgs/create_environment.jpg" alt="create environment" width="500" style="border: 1px solid black;">
 
-#### 8. Confirm Python.exe Installation:
-
-If prompted, enter your administrator password to confirm the installation of "python.exe".
-
-#### 9. Activate the New Environment:
+#### 8. Activate the New Environment:
 
 Activate the new Conda environment with:
 
@@ -64,86 +58,135 @@ Activate the new Conda environment with:
    conda activate DEEPLABCUT
    ```
 
-#### 10. Launch a DeepLabCut Session:
+#### 9. Launch a DeepLabCut Session:
 
 Initiate a DeepLabCut session using the command prompt:
-
-   ```
-   ipython
-   import deeplabcut
-   deeplabcut.launch_dlc()
-   ```
-
-Your command prompt should appear as:
-   ```
-   (DEEPLABCUT) C:\Users\YourUserName>ipython
-   Python 3.8.10 | packaged by conda-forge | (default, May 11 2021, 06:25:23) [MSC v.1916 64 bit (AMD64)]
-   Type 'copyright', 'credits' or 'license' for more information
-   IPython 7.25.0 -- An enhanced Interactive Python. Type '?' for help.
-
-   In [1]: import deeplabcut
-
-   In [2]: deeplabcut.launch_dlc()
-   ```
 
    ```
    python -m deeplabcut
    ```
 
-#### 10.5 https://schoolforengineering.com/tutorial/install-tensorflow-cuda-gpu-windows-10/
-
-#### 11. Verify Successful Installation:
-
-If everything has been installed correctly, the DeepLabCut GUI should now appear.
-
-#### 12. Troubleshoot TensorFlow Installation:
-
-If you encounter an error stating "No module named 'tensorflow'", you may need to install TensorFlow using the following commands:
-   ```
-   pip install --upgrade pip
-   pip install tensorflow
-   ```
-
 For more installation tips, visit the [official DeepLabCut documentation](https://deeplabcut.github.io/DeepLabCut/docs/recipes/installTips.html).
 
-#### Docker Install:
 
-##### Prerequisites
+## DeepLabCut Usage Guide
 
-Before proceeding with the installation, make sure you have the following prerequisites set up on your Windows machine:
+This guide provides detailed instructions on how to use DeepLabCut (DLC) for your video analysis tasks.
 
-- [Linux installation with WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
-- [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+### Steps
 
-1. Open the Ubuntu(22.04) subsystem installed with WSL 2.
+1. **Start DeepLabCut**: 
 
-2. Install the DeepLabCut helper package by running the following command in the Ubuntu subsystem:
-   ```
-   sudo apt update
-   sudo apt upgrade
-   sudo apt install python3-pip
-   sudo pip install deeplabcut-docker
-   ```
+    Launch the "CMD.exe Prompt" from Anaconda Navigator, and enter the following commands:
 
-3. Verify the Docker installation by running the following command:
-   ```
-   docker version
-   ```
+    ```
+    conda activate DEEPLABCUT
+    python -m deeplabcut
+    ```
+    This will open the DeepLabCut welcome window.
 
-4. To launch the DeepLabCut graphical user interface (GUI) directly, run the following command:
-   ```
-   deeplabcut-docker gui
-   ```
+   <img src="./imgs/dlc_welcome.jpg" width="500" style="border: 1px solid black;">
 
-Congratulations! You have successfully installed DeepLabCut on your Windows machine. You can now use DeepLabCut for markerless pose estimation in your research projects.
+2. **Create a new project**: 
 
-For more information on how to use DeepLabCut, refer to the official DeepLabCut documentation and tutorials available on the [DeepLabCut GitHub repository](https://github.com/DeepLabCut/DeepLabCut).
+    Click on `Create New Project` on the welcome page. 
 
-To use this code, you must first install DeepLabCut and its dependencies. Once you have installed DeepLabCut, you can install the additional required packages using pip:
+    - Fill out the project name and experimenter name, then check the `Copy videos to project folder` checkbox.
+    - Do not use the `Browse videos` button which does work(bug). Use **drag & drop** to add your videos. Note: DLC may not recognize MPEG files correctly, so it's recommended to use MP4 files. Ensure that you don't change the video file location after this step.
+    - Once all fields are filled, click `Create`.
 
-```
-pip install numpy pandas matplotlib seaborn
-```
+3. **Edit Configuration File**: 
+
+    - Locate the `Config.yaml` file in your project directory and open it.
+    - Replace the `bodyparts` list with the labels you want to use for your project. 
+    - The `numframes2pick` parameter specifies the number of frames to extract for labeling. For accurate analysis, it is recommended to pick a couple hundred frames.
+    - The `skeleton` parameter represents the connections between each label. These connections will be displayed in the final video.
+    - Save your changes (Ctrl+S) and verify them by clicking the `Edit Config.yaml` button in DeepLabCut.
+
+4. **Extract Frames**: 
+
+    Navigate to the `Extract Frames` tab in DeepLabCut. 
+
+    - You can keep the default settings.
+    - For better analysis, it's recommended to crop the frame. Draw a rectangle around the area of interest in the GUI, then click `Crop`.
+    - Once you're done, click `Extract Frames`.
+
+5. **Label Frames**: 
+
+    Navigate to the `Label Frames` tab. 
+
+    - Click the `Label Frames` button to open the frame labeling interface.
+    - Load the frames you extracted in the previous step.
+    - Use the tools in the interface to label the body parts in each frame. Remember to save your changes (Ctrl+S).
+    - Check if the `CollectedData_YourName.csv` and `CollectedData_YourName.h5` files have been created in the `labeled-data/video_name` directory in your project folder.
+
+6. **Create a Training Dataset**: 
+
+    Navigate to the `Create Training Dataset` tab. 
+
+    - You can keep the default settings.
+    - Click `Create Training Dataset`.
+
+7. **Train the Network**: 
+
+    Navigate to the `Train Network` tab. 
+
+    - Set `displayiters` to 20000, `saveiters` to 50000, and `maxiters` to 1000000.
+    - Click `Start Training`. The training process will take some time and you can monitor its progress in the Anaconda Prompt.
+
+8. **Evaluate the Network**: 
+
+    Navigate to the `Evaluate Network` tab. 
+
+    - Check both `plotting` and `comparisonbodyparts` options.
+    - Click `Start Evaluation`.
+
+9. **Analyze Videos**: 
+
+    Navigate to the `Analyze Videos` tab. 
+
+    - Click `Select videos` and add the videos you want to analyze.
+    - Ensure `save_as_csv` is checked.
+    - Click `Analyze Videos`. 
+
+10. **Create Labeled Videos**: 
+
+    Navigate to the `Create Labeled Videos` tab. 
+
+    - Add the videos you analyzed in the previous step.
+    - Check both `plot_tracklets` and `save_frames` options.
+    - Click `Create Videos`.
+
+11. **Extract Outliers (optional)**: 
+
+    If the analysis results are not satisfactory, navigate to the `Extract Outlier Frames` tab. 
+
+    - Add the videos you want to refine.
+    - Specify the extraction algorithm. If you choose `manual`, a new interface will open, allowing you to go through each frame of the video and mark frames that need to be relabeled.
+    - Click `Extract Outlier Frames`.
+
+12. **Refine Labels (optional)**: 
+
+    If you have outlier frames, navigate to the `Refine Labels` tab. 
+
+    - Load the frames, move the mislabeled points to their correct positions, then save your changes.
+    - You can verify your changes by checking the `CollectedData_YourName.csv` file in the `labeled-data/video_name` directory in your project folder.
+    - Once you're done, click `Merge datasets`.
+
+Congratulations! You have successfully used DeepLabCut to analyze your videos. For further analysis, you can import the CSV files created during the analysis into your preferred data analysis software.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Usage
 
