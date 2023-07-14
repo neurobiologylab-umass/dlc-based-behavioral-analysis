@@ -113,8 +113,9 @@ This guide provides detailed instructions on how to use DeepLabCut (DLC) for you
 
    You can click the "Edit config.yaml" button to verify that the list has been updated.
 
-   <img src="./imgs/dlc_config_check1.jpg" width="150" style="border: 1px solid black;">
+   <img src="./imgs/dlc_config_check1.jpg" width="300" style="border: 1px solid black;">
 
+   <br> 
    
    <img src="./imgs/dlc_config_check2.jpg" width="500" style="border: 1px solid black;">
 
