@@ -95,6 +95,8 @@ This guide provides detailed instructions on how to use DeepLabCut (DLC) for you
     - Do not use the `Browse videos` button which does work(bug). Use **drag & drop** to add your videos. Note: DLC may not recognize MPEG files correctly, so it's recommended to use MP4 files. Ensure that you don't change the video file location after this step.
     - Once all fields are filled, click `Create`.
 
+   <img src="./imgs/dlc_create_project.jpg" width="500" style="border: 1px solid black;">
+
 3. **Edit Configuration File**: 
 
     - Locate the `Config.yaml` file in your project directory and open it.
@@ -103,59 +105,145 @@ This guide provides detailed instructions on how to use DeepLabCut (DLC) for you
     - The `skeleton` parameter represents the connections between each label. These connections will be displayed in the final video.
     - Save your changes (Ctrl+S) and verify them by clicking the `Edit Config.yaml` button in DeepLabCut.
 
+    
+   <img src="./imgs/dlc_config1.jpg" width="500" style="border: 1px solid black;">
+
+   
+   <img src="./imgs/dlc_config2.jpg" width="500" style="border: 1px solid black;">
+
+   You can click the "Edit config.yaml" button to verify that the list has been updated.
+
+   <img src="./imgs/dlc_config_check1.jpg" width="150" style="border: 1px solid black;">
+
+   
+   <img src="./imgs/dlc_config_check2.jpg" width="500" style="border: 1px solid black;">
+
 4. **Extract Frames**: 
 
     Navigate to the `Extract Frames` tab in DeepLabCut. 
 
     - You can keep the default settings.
-    - For better analysis, it's recommended to crop the frame. Draw a rectangle around the area of interest in the GUI, then click `Crop`.
-    - Once you're done, click `Extract Frames`.
+    - You can crop the frame by select the `GUI` from `Frame cropping` and draw a rectangle around the area of interest in the GUI, then click `Crop`.
+
+   <img src="./imgs/dlc_extract_frames.jpg" width="500" style="border: 1px solid black;">
+
+   <img src="./imgs/dlc_crop_frames.jpg" width="500" style="border: 1px solid black;">
+
+    - Once you're done, `Extract Frames` will be running. When it is done, click `ok` and go to the next step.
+    
+   <img src="./imgs/dlc_extract_frames_done.jpg" width="300" style="border: 1px solid black;">
+
 
 5. **Label Frames**: 
 
     Navigate to the `Label Frames` tab. 
 
-    - Click the `Label Frames` button to open the frame labeling interface.
+    - Click the `Label Frames` button to open the frame labeling interface.   
+
+   <img src="./imgs/dlc_labeling1.jpg" width="500" style="border: 1px solid black;">
+
     - Load the frames you extracted in the previous step.
-    - Use the tools in the interface to label the body parts in each frame. Remember to save your changes (Ctrl+S).
-    - Check if the `CollectedData_YourName.csv` and `CollectedData_YourName.h5` files have been created in the `labeled-data/video_name` directory in your project folder.
+
+   <img src="./imgs/dlc_labeling2.jpg" width="500" style="border: 1px solid black;">
+
+The labeling interface offers several features that make the task of labeling your images more convenient and efficient. Here's a quick rundown of each feature:
+
+- **Image Display Area**: This is where your selected image is displayed for labeling. 
+
+- **+ Button**: This button is used to mark a new label on the image. You can use either left or right mouse clicks.
+
+- **Arrow Button**: This button is used to select an existing label and either reposition or delete it. Multiple points can be selected and repositioned or deleted simultaneously.
+
+- **Navigation Bar**: This tool or your keyboard's arrow keys can be used to navigate through images, moving to the next or previous image with ease.
+
+- **Lock Selection**: This feature is particularly useful when you have multiple points to label on each frame, such as 'head', 'frontpaw', 'backpaw', and 'tail'. If you lock the selection, for example, to 'head', as you navigate to any other frame using the navigation bar, 'head' will be automatically selected for labeling. On the other hand, if you unlock the selection, the labeling process will proceed in the default order 'head' > 'frontpaw' > 'backpaw' > 'tail' as you move to the next frame.
+
+- **Save Button (Ctrl+S)**: Regularly save your changes to prevent any potential data loss. You can do this by clicking the Save button or by using the shortcut `Ctrl+S`.
+
+- **Post-Labeling Verification**: After you have completed the labeling process, your annotated data will be saved in both CSV and H5 formats. These files, which contain the coordinates of the labels for each frame of your videos, can be found in the labeled-data directory within your project folder (named after your video file). Checking these files ensures that your labels have been saved correctly.
+
+Understanding and effectively using these features can significantly streamline your labeling process, contributing to the overall accuracy and efficiency of your DeepLabCut project.
+
+   <img src="./imgs/dlc_labeling3.jpg" width="500" style="border: 1px solid black;">
+
+
+   <img src="./imgs/dlc_labeling4.jpg" width="500" style="border: 1px solid black;">
 
 6. **Create a Training Dataset**: 
 
     Navigate to the `Create Training Dataset` tab. 
 
-    - You can keep the default settings.
-    - Click `Create Training Dataset`.
+    - **Shuffle**: This option determines whether the training samples are shuffled.
+    - **Network architecture**: Choose the appropriate model architecture based on your requirements:
+
+        - **ResNet (Residual Networks)**: Known for "skip connections" and deep layers, ResNet effectively mitigates the vanishing gradient problem, making it suitable for complex tasks like image classification. However, it's computationally expensive and large in size.
+
+        - **MobileNet**: Designed for mobile and embedded vision applications, MobileNet is computationally efficient and small in size due to its use of depthwise separable convolutions. It's a go-to choice for resource-constrained applications.
+
+        - **EfficientNet**: With a balance of accuracy and computational efficiency, EfficientNet uses compound scaling and an improved version of MobileNet's depthwise convolution. It provides state-of-the-art accuracy while remaining small and fast.
+
+    - **Augmentation method**: Select the image augmentation method. Augmentation techniques such as tensorpack and imgaug can provide variation to your training data, enhancing the model's ability to generalize.
+     
+    You can keep the default settings, or select particular network and augmentation method depend on your needs. after you choose the settings, click `Create Training Dataset`. 
+
+   <img src="./imgs/dlc_create_training_ds.jpg" width="500" style="border: 1px solid black;">
 
 7. **Train the Network**: 
 
     Navigate to the `Train Network` tab. 
 
-    - Set `displayiters` to 20000, `saveiters` to 50000, and `maxiters` to 1000000.
-    - Click `Start Training`. The training process will take some time and you can monitor its progress in the Anaconda Prompt.
+    - `Display iterations`: This determines how frequently the training status is displayed in terminal(shell window).  
+    - `Save iterations`: This dictates how often the state of the trained network is saved.
+    - `Maximum iterations`: This is the total number of iterations that the training process should complete. 
+
+    After setting these parameters, click `Start Training`. The training procedure will take some time to finish. You can keep track of its progress in the Anaconda Prompt. Once the training is finished, a completion notification window will pop up. Click 'OK' on this window to proceed to the next step.
+    
+   <img src="./imgs/dlc_training.jpg" width="500" style="border: 1px solid black;">
+
+   
+   <img src="./imgs/dlc_training_completed.jpg" width="500" style="border: 1px solid black;">
 
 8. **Evaluate the Network**: 
 
     Navigate to the `Evaluate Network` tab. 
 
-    - Check both `plotting` and `comparisonbodyparts` options.
-    - Click `Start Evaluation`.
+    - Check both `Plot predictions` and `compare all bodyparts` options.
+    - Click `Evaluate Network`.
+
+   <img src="./imgs/dlc_evaluate.jpg" width="500" style="border: 1px solid black;">
+   
+   <img src="./imgs/dlc_evaluate1.jpg" width="500" style="border: 1px solid black;">
 
 9. **Analyze Videos**: 
 
     Navigate to the `Analyze Videos` tab. 
 
-    - Click `Select videos` and add the videos you want to analyze.
+    - Click `Select videos` and choose the videos you want to analyze.
     - Ensure `save_as_csv` is checked.
-    - Click `Analyze Videos`. 
+    - Click `Analyze Videos`.
+
+   <img src="./imgs/dlc_analyze.jpg" width="500" style="border: 1px solid black;">
+
+   <img src="./imgs/dlc_analyze1.jpg" width="500" style="border: 1px solid black;">
+
+   <img src="./imgs/dlc_analyze2.jpg" width="500" style="border: 1px solid black;">
 
 10. **Create Labeled Videos**: 
 
-    Navigate to the `Create Labeled Videos` tab. 
+    Navigate to the `Create Videos` tab. 
 
-    - Add the videos you analyzed in the previous step.
-    - Check both `plot_tracklets` and `save_frames` options.
-    - Click `Create Videos`.
+    - Add the videos you analyzed in the previous step. The system will typically select the videos automatically, if not, you can manually add the videos in the same manner as in previous step.
+    - Check both `Plot all body parts` and `Draw skeleton` options.
+    - Click on the `Build Skeleton` button to validate that the points are properly connected, then close the pop-up window.
+    - Finally, click on `Create Videos`. The system will now generate the labeled videos for you.
+    
+   <img src="./imgs/dlc_create_videos.jpg" width="500" style="border: 1px solid black;">
+    
+   <img src="./imgs/dlc_create_videos1.jpg" width="500" style="border: 1px solid black;">
+    
+   <img src="./imgs/dlc_create_videos2.jpg" width="500" style="border: 1px solid black;">
+    
+   <img src="./imgs/dlc_create_videos3.jpg" width="500" style="border: 1px solid black;">
 
 11. **Extract Outliers (optional)**: 
 
@@ -164,6 +252,8 @@ This guide provides detailed instructions on how to use DeepLabCut (DLC) for you
     - Add the videos you want to refine.
     - Specify the extraction algorithm. If you choose `manual`, a new interface will open, allowing you to go through each frame of the video and mark frames that need to be relabeled.
     - Click `Extract Outlier Frames`.
+    
+   <img src="./imgs/dlc_outliers.jpg" width="500" style="border: 1px solid black;">
 
 12. **Refine Labels (optional)**: 
 
@@ -172,6 +262,10 @@ This guide provides detailed instructions on how to use DeepLabCut (DLC) for you
     - Load the frames, move the mislabeled points to their correct positions, then save your changes.
     - You can verify your changes by checking the `CollectedData_YourName.csv` file in the `labeled-data/video_name` directory in your project folder.
     - Once you're done, click `Merge datasets`.
+    
+   <img src="./imgs/dlc_outliers1.jpg" width="500" style="border: 1px solid black;">
+    
+   <img src="./imgs/dlc_outliers2.jpg" width="500" style="border: 1px solid black;">
 
 Congratulations! You have successfully used DeepLabCut to analyze your videos. For further analysis, you can import the CSV files created during the analysis into your preferred data analysis software.
 
