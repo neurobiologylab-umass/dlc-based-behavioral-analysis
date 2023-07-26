@@ -2,6 +2,29 @@
 
 This repository contains code and documentation for using DeepLabCut (DLC) to analyze the behavior of animals. Specifically, the code in this repository provides a pipeline for using DLC to track the movement of animal paws and analyze their behavior.
 
+## Clone the Repository
+1. Open a Git terminal. If you haven't yet configured an SSH key for GitHub on your machine, generate a new one with the following command:
+
+   ```
+   ssh-keygen
+   ```
+
+2. Navigate to your GitHub account settings. Click on "SSH and GPG keys" and then "New SSH key". Paste the public key that was generated in the first step and click "Add SSH key".
+
+3. Set up your GitHub username and email on your local machine. You can do this with the following commands:
+
+   ```
+   git config --global user.name "Your Name"
+   git config --global user.email "your-email@example.com"
+
+   ```
+
+4. Now you're ready to clone the repository. In your Git terminal, enter the following command to download the repository to your local machine:
+
+   ```
+   git clone git@github.com:neurobiologylab/dlc-based-behavioral-analysis.git
+   ```
+
 ## DeepLabCut Windows Installation Guide
 
 This section guides you through a step-by-step process to install DeepLabCut on a Windows machine. DeepLabCut is an open-source package primarily used for markerless pose estimation of animals in videos.
@@ -267,6 +290,31 @@ Understanding and effectively using these features can significantly streamline 
    <img src="./imgs/dlc_outliers1.jpg" width="500" style="border: 1px solid black;">
     
    <img src="./imgs/dlc_outliers2.jpg" width="500" style="border: 1px solid black;">
+
+
+## Jupyter Notebook
+
+1. Start the Anaconda Navigator.
+
+Launch the Anaconda Navigator on your system. Within the Anaconda Navigator interface, install (if not already installed) and launch "Jupyter Notebook". This will open a new tab in your default web browser with the Jupyter Notebook file explorer.
+
+   <img src="./imgs/jupyter.jpg" alt="anaconda navigator" width="500" style="border: 1px solid black;">
+
+2. Open the Notebook:
+
+In the Jupyter Notebook file explorer tab in your browser, navigate to the directory where you cloned the dlc-based-behavioral-analysis repository. Find and open the notebook file.
+
+   <img src="./imgs/notebook.jpg" alt="anaconda navigator" width="500" style="border: 1px solid black;">
+
+3. Run the Notebook:
+
+With the notebook file open, locate the cell with the path to the data file. Replace this with the correct path to the data file you wish to analyze. After updating the path, run the code in the notebook by selecting the cell and pressing 'Shift' + 'Enter'. This will execute the cell and output the results beneath it.
+
+   <img src="./imgs/data-analysis.jpg" alt="anaconda navigator" width="500" style="border: 1px solid black;">
+
+
+
+
 
 Congratulations! You have successfully used DeepLabCut to analyze your videos. For further analysis, you can import the CSV files created during the analysis into your preferred data analysis software.
 
